@@ -13,21 +13,19 @@
 
 /*  Following libraries shall be included:
  *  ESP32: 
- *  ESP Async WebServer
  *  ESP8266:
- *  ??
  */
 
 #include <Arduino.h>
-#include "my-wifi.h"
+#include "EspWiFi.h"
 
-void MyWiFi_Init(){
+void EspWiFi_Init(){
     // Make sure you're in station mode    
     WiFi.mode(WIFI_STA);
 }
 
 
-bool MyWiFi_Connect(const char *ssid, const char *passphrase, int timeout){
+bool EspWiFi_Connect(const char *ssid, const char *passphrase, int timeout){
 #ifdef DEBUGGING_ENABLED
     Serial.println("");
     Serial.print("Connecting to WiFi with SSID ");
@@ -67,15 +65,15 @@ bool MyWiFi_Connect(const char *ssid, const char *passphrase, int timeout){
     return connected;
 }
 
-void MyWiFi_Disconnect(){
+void EspWiFi_Disconnect(){
     WiFi.disconnect();
 }
 
-IPAddress MyWiFi_GetIPv4(){
+IPAddress EspWiFi_GetIPv4(){
     return WiFi.localIP();
 }
 
-String MyWiFi_GetIPv4String(){
+String EspWiFi_GetIPv4String(){
     IPAddress ip = WiFi.localIP();
     return ip.toString();
 }
